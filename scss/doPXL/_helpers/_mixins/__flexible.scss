@@ -15,28 +15,28 @@
 // @include flexible('display: flex, direction: col !important, justify-content: center');
 // -----------------------------------------------------------------------------
 @mixin flexible($args) {
-	@if $args and $args != '' {
-		$properties: _property-partition($args);
-		@each $item in $properties {
-			$property: unquote(_get($item, 'property'));
-			$value: unquote(_get($item, 'value'));
-			$important: unquote(_get($item, 'important'));
-			
-			@if $property == 'display' {
-				@include flexbox($value, $important);
-			} @if $property == 'direction' {
-				@include flex-direction($value, $important);
-			} @if $property == 'wrap' {
-				@include flex-wrap($value, $important);
-			} @if $property == 'justify-content' {
-				@include justify-content($value, $important);
-			} @if $property == 'align-items' {
-				@include align-items($value, $important);
-			} @if $property == 'align-content' {
-				@include align-content($value, $important);
-			}
-		}
-	}
+  @if $args and $args != '' {
+    $properties: _property-partition($args);
+    @each $item in $properties {
+      $property: unquote(_get($item, 'property'));
+      $value: unquote(_get($item, 'value'));
+      $important: unquote(_get($item, 'important'));
+      
+      @if $property == 'display' {
+        @include flexbox($value, $important);
+      } @if $property == 'direction' {
+        @include flex-direction($value, $important);
+      } @if $property == 'wrap' {
+        @include flex-wrap($value, $important);
+      } @if $property == 'justify-content' {
+        @include justify-content($value, $important);
+      } @if $property == 'align-items' {
+        @include align-items($value, $important);
+      } @if $property == 'align-content' {
+        @include align-content($value, $important);
+      }
+    }
+  }
 }
 
 // -----------------------------------------------------------------------------
@@ -60,24 +60,24 @@
 // );
 // -----------------------------------------------------------------------------
 @mixin flexible-item($args) {
-	@if $args and $args != '' {
-		$properties: _property-partition($args);
-		@each $item in $properties {
-			$property: unquote(_get($item, 'property'));
-			$value: unquote(_get($item, 'value'));
-			$important: unquote(_get($item, 'important'));
-			
-			@if $property == 'order' {
-				@include order($value, $important);
-			} @if $property == 'grow' {
-				@include flex-grow($value, $important);
-			} @if $property == 'shrink' {
-				@include flex-shrink($value, $important);
-			} @if $property == 'basis' {
-				@include flex-basis($value, $important);
-			} @if $property == 'align-self' {
-				@include align-self($value, $important);
-			}
-		}
-	}
+  @if $args and $args != '' {
+    $properties: _property-partition($args);
+    @each $item in $properties {
+      $property: unquote(_get($item, 'property'));
+      $value: unquote(_get($item, 'value'));
+      $important: unquote(_get($item, 'important'));
+      
+      @if $property == 'order' {
+        @include order($value, $important);
+      } @if $property == 'grow' {
+        @include flex-grow($value, $important);
+      } @if $property == 'shrink' {
+        @include flex-shrink($value, $important);
+      } @if $property == 'basis' {
+        @include flex-basis($value, $important);
+      } @if $property == 'align-self' {
+        @include align-self($value, $important);
+      }
+    }
+  }
 }

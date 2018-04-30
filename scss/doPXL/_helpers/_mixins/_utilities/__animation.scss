@@ -11,7 +11,7 @@
 // @include animation-name('mymove');
 // -----------------------------------------------------------------------------
 @mixin animation-name($value: null, $important: false) {
-	@include _prefix('animation-name', _none($value), $important, ('webkit'));
+  @include _prefix('animation-name', _none($value), $important, ('webkit'));
 }
 
 // -----------------------------------------------------------------------------
@@ -27,7 +27,7 @@
 // @include animation-duration('3s');
 // -----------------------------------------------------------------------------
 @mixin animation-duration($value: 0, $important: false) {
-	@include _prefix('animation-duration', $value, $important, ('webkit'));
+  @include _prefix('animation-duration', $value, $important, ('webkit'));
 }
 
 // -----------------------------------------------------------------------------
@@ -43,7 +43,7 @@
 // @include animation-timing-function('linear');
 // -----------------------------------------------------------------------------
 @mixin animation-timing-function($value: 'ease', $important: false) {
-	@include _prefix('animation-timing-function', $value, $important, ('webkit'));
+  @include _prefix('animation-timing-function', $value, $important, ('webkit'));
 }
 
 // -----------------------------------------------------------------------------
@@ -59,7 +59,7 @@
 // @include animation-delay('2s');
 // -----------------------------------------------------------------------------
 @mixin animation-delay($value: '0s', $important: false) {
-	@include _prefix('animation-delay', $value, $important, ('webkit'));
+  @include _prefix('animation-delay', $value, $important, ('webkit'));
 }
 
 // -----------------------------------------------------------------------------
@@ -75,7 +75,7 @@
 // @include animation-iteration-count(2);
 // -----------------------------------------------------------------------------
 @mixin animation-iteration-count($value: 1, $important: false) {
-	@include _prefix('animation-iteration-count', $value, $important, ('webkit'));
+  @include _prefix('animation-iteration-count', $value, $important, ('webkit'));
 }
 
 // -----------------------------------------------------------------------------
@@ -91,7 +91,7 @@
 // @include animation-direction('alternate');
 // -----------------------------------------------------------------------------
 @mixin animation-direction($value: 'normal', $important: false) {
-	@include _prefix('animation-direction', $value, $important, ('webkit'));
+  @include _prefix('animation-direction', $value, $important, ('webkit'));
 }
 
 // -----------------------------------------------------------------------------
@@ -107,7 +107,7 @@
 // @include animation-fill-mode('forwards');
 // -----------------------------------------------------------------------------
 @mixin animation-fill-mode($value: null, $important: false) {
-	@include _prefix('animation-fill-mode', _none($value), $important, ('webkit'));
+  @include _prefix('animation-fill-mode', _none($value), $important, ('webkit'));
 }
 
 // -----------------------------------------------------------------------------
@@ -123,7 +123,7 @@
 // @include animation-play-state('paused');
 // -----------------------------------------------------------------------------
 @mixin animation-play-state($value: 'running', $important: false) {
-	@include _prefix('animation-play-state', $value, $important, ('webkit'));
+  @include _prefix('animation-play-state', $value, $important, ('webkit'));
 }
 
 // -----------------------------------------------------------------------------
@@ -139,7 +139,7 @@
 // @include _animation('mymove 3s linear 2s 2 alternate');
 // -----------------------------------------------------------------------------
 @mixin _animation($value: 'none 0 ease 0 1 normal none running', $important: false) {
-	@include _prefix('animation', $value, $important, ('webkit'));
+  @include _prefix('animation', $value, $important, ('webkit'));
 }
 
 // -----------------------------------------------------------------------------
@@ -159,12 +159,12 @@
 // }
 // -----------------------------------------------------------------------------
 @mixin keyframes($animation-name) {
-	@-webkit-keyframes #{unquote($animation-name)} {
-		@content;
-	}
-	@keyframes #{unquote($animation-name)} {
-		@content;
-	}
+  @-webkit-keyframes #{unquote($animation-name)} {
+    @content;
+  }
+  @keyframes #{unquote($animation-name)} {
+    @content;
+  }
 }
 
 // -----------------------------------------------------------------------------
@@ -180,7 +180,7 @@
 // @include transition-property('width');
 // -----------------------------------------------------------------------------
 @mixin transition-property($value: 'all', $important: false) {
-	@include _prefix('transition-property', $value, $important, ('webkit', 'o'));
+  @include _prefix('transition-property', $value, $important, ('webkit', 'o'));
 }
 
 // -----------------------------------------------------------------------------
@@ -196,7 +196,7 @@
 // @include transition-duration('5s');
 // -----------------------------------------------------------------------------
 @mixin transition-duration($value: '0s', $important: false) {
-	@include _prefix('transition-duration', $value, $important, ('webkit', 'o'));
+  @include _prefix('transition-duration', $value, $important, ('webkit', 'o'));
 }
 
 // -----------------------------------------------------------------------------
@@ -212,7 +212,7 @@
 // @include transition-timing-function('linear');
 // -----------------------------------------------------------------------------
 @mixin transition-timing-function($value: 'ease', $important: false) {
-	@include _prefix('transition-timing-function', $value, $important, ('webkit', 'o'));
+  @include _prefix('transition-timing-function', $value, $important, ('webkit', 'o'));
 }
 
 // -----------------------------------------------------------------------------
@@ -228,7 +228,7 @@
 // @include transition-delay('2s');
 // -----------------------------------------------------------------------------
 @mixin transition-delay($value: '0s', $important: false) {
-	@include _prefix('transition-delay', $value, $important, ('webkit', 'o'));
+  @include _prefix('transition-delay', $value, $important, ('webkit', 'o'));
 }
 
 // -----------------------------------------------------------------------------
@@ -244,5 +244,5 @@
 // @include _transition('width 5s linear 2s');
 // -----------------------------------------------------------------------------
 @mixin _transition($value: 'all 0s ease 0s', $important: false) {
-	@include _prefix('transition', $value, $important, ('webkit', 'o'));
+  @include _prefix('transition', $value, $important, ('webkit', 'o'));
 }

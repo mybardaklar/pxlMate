@@ -1,230 +1,230 @@
 .container {
-	width: 100%;
-	max-width: $dopxl-container;
-	@include margin(x 'auto');
-	@include padding(x $dopxl-outGutter);
-	@include background(color '#263238');
+  width: 100%;
+  max-width: $dopxl-container;
+  @include margin(x 'auto');
+  @include padding(x $dopxl-outGutter);
+  @include background(color '#263238');
 
-	&.fluid {
-		max-width: 100%;
-		.wrapper { @include margin(x '0'); }
-	}
-	
-	.wrapper {
-		// <>
-		// Wrapper Properties (on Every Screen)
-		@include display('flex');
-		@include flex-direction();
-		@include flex-wrap();
-		@include align-items();
-		@include justify-content();
-		@include align-content();
-		@include margin(x '-#{$dopxl-outGutter}');
-
-
-
-		// <>
-		// -- Flex Direction --
-		// on Every Screen
-		&.row { @include flex-direction('row'); }
-		&.rowReverse { @include flex-direction('row-reverse'); }
-		&.col { @include flex-direction('column'); }
-		&.colReverse { @include flex-direction('column-reverse'); }
-		// on only Desktop devices
-		@include media-screen('desktop') {
-			&.desktop-row { @include flex-direction('row'); }
-			&.desktop-rowReverse { @include flex-direction('row-reverse'); }
-			&.desktop-col { @include flex-direction('column'); }
-			&.desktop-colReverse { @include flex-direction('column-reverse'); }
-		}
-		// on only Tablet devices
-		@include media-screen('tablet') {
-			&.tablet-row { @include flex-direction('row'); }
-			&.tablet-rowReverse { @include flex-direction('row-reverse'); }
-			&.tablet-col { @include flex-direction('column'); }
-			&.tablet-colReverse { @include flex-direction('column-reverse'); }
-		}
-		// on only Mobile devices
-		@include media-screen('mobile') {
-			&.mobile-row { @include flex-direction('row'); }
-			&.mobile-rowReverse { @include flex-direction('row-reverse'); }
-			&.mobile-col { @include flex-direction('column'); }
-			&.mobile-colReverse { @include flex-direction('column-reverse'); }
-		}
-		// </>
+  &.fluid {
+    max-width: 100%;
+    .wrapper { @include margin(x '0'); }
+  }
+  
+  .wrapper {
+    // <>
+    // Wrapper Properties (on Every Screen)
+    @include display('flex');
+    @include flex-direction();
+    @include flex-wrap();
+    @include align-items();
+    @include justify-content();
+    @include align-content();
+    @include margin(x '-#{$dopxl-outGutter}');
 
 
 
-		// <>
-		// -- Flex Wrap --
-		// on Every Screen
-		&.nowrap { @include flex-wrap('nowrap'); }
-		&.wrap { @include flex-wrap('wrap'); }
-		&.wrapReverse { @include flex-wrap('wrap-reverse'); }
-		// on only Desktop devices
-		@include media-screen('desktop') {
-			&.desktop-nowrap { @include flex-wrap('nowrap'); }
-			&.desktop-wrap { @include flex-wrap('wrap'); }
-			&.desktop-wrapReverse { @include flex-wrap('wrap-reverse'); }
-		}
-		// on only Tablet devices
-		@include media-screen('tablet') {
-			&.tablet-nowrap { @include flex-wrap('nowrap'); }
-			&.tablet-wrap { @include flex-wrap('wrap'); }
-			&.tablet-wrapReverse { @include flex-wrap('wrap-reverse'); }
-		}
-		// on only Mobile devices
-		@include media-screen('mobile') {
-			&.mobile-nowrap { @include flex-wrap('nowrap'); }
-			&.mobile-wrap { @include flex-wrap('wrap'); }
-			&.mobile-wrapReverse { @include flex-wrap('wrap-reverse'); }
-		}
-		// </>
+    // <>
+    // -- Flex Direction --
+    // on Every Screen
+    &.row { @include flex-direction('row'); }
+    &.rowReverse { @include flex-direction('row-reverse'); }
+    &.col { @include flex-direction('column'); }
+    &.colReverse { @include flex-direction('column-reverse'); }
+    // on only Desktop devices
+    @include media-screen('desktop') {
+      &.desktop-row { @include flex-direction('row'); }
+      &.desktop-rowReverse { @include flex-direction('row-reverse'); }
+      &.desktop-col { @include flex-direction('column'); }
+      &.desktop-colReverse { @include flex-direction('column-reverse'); }
+    }
+    // on only Tablet devices
+    @include media-screen('tablet') {
+      &.tablet-row { @include flex-direction('row'); }
+      &.tablet-rowReverse { @include flex-direction('row-reverse'); }
+      &.tablet-col { @include flex-direction('column'); }
+      &.tablet-colReverse { @include flex-direction('column-reverse'); }
+    }
+    // on only Mobile devices
+    @include media-screen('mobile') {
+      &.mobile-row { @include flex-direction('row'); }
+      &.mobile-rowReverse { @include flex-direction('row-reverse'); }
+      &.mobile-col { @include flex-direction('column'); }
+      &.mobile-colReverse { @include flex-direction('column-reverse'); }
+    }
+    // </>
 
 
 
-		// <>
-		// -- Align Items --
-		// on Every Screen
-		&.alignItems-stretch { @include align-items('stretch'); }
-		&.alignItems-center { @include align-items('center'); }
-		&.alignItems-start { @include align-items('flex-start'); }
-		&.alignItems-end { @include align-items('flex-end'); }
-		&.alignItems-baseline { @include align-items('baseline'); }
-		// on only Desktop devices
-		@include media-screen('desktop') {
-			&.desktop-alignItems-stretch { @include align-items('stretch'); }
-			&.desktop-alignItems-center { @include align-items('center'); }
-			&.desktop-alignItems-start { @include align-items('flex-start'); }
-			&.desktop-alignItems-end { @include align-items('flex-end'); }
-			&.desktop-alignItems-baseline { @include align-items('baseline'); }
-		}
-		// on only Tablet devices
-		@include media-screen('tablet') {
-			&.tablet-alignItems-stretch { @include align-items('stretch'); }
-			&.tablet-alignItems-center { @include align-items('center'); }
-			&.tablet-alignItems-start { @include align-items('flex-start'); }
-			&.tablet-alignItems-end { @include align-items('flex-end'); }
-			&.tablet-alignItems-baseline { @include align-items('baseline'); }
-		}
-		// on only Mobile devices
-		@include media-screen('mobile') {
-			&.mobile-alignItems-stretch { @include align-items('stretch'); }
-			&.mobile-alignItems-center { @include align-items('center'); }
-			&.mobile-alignItems-start { @include align-items('flex-start'); }
-			&.mobile-alignItems-end { @include align-items('flex-end'); }
-			&.mobile-alignItems-baseline { @include align-items('baseline'); }
-		}
-		// </>
+    // <>
+    // -- Flex Wrap --
+    // on Every Screen
+    &.nowrap { @include flex-wrap('nowrap'); }
+    &.wrap { @include flex-wrap('wrap'); }
+    &.wrapReverse { @include flex-wrap('wrap-reverse'); }
+    // on only Desktop devices
+    @include media-screen('desktop') {
+      &.desktop-nowrap { @include flex-wrap('nowrap'); }
+      &.desktop-wrap { @include flex-wrap('wrap'); }
+      &.desktop-wrapReverse { @include flex-wrap('wrap-reverse'); }
+    }
+    // on only Tablet devices
+    @include media-screen('tablet') {
+      &.tablet-nowrap { @include flex-wrap('nowrap'); }
+      &.tablet-wrap { @include flex-wrap('wrap'); }
+      &.tablet-wrapReverse { @include flex-wrap('wrap-reverse'); }
+    }
+    // on only Mobile devices
+    @include media-screen('mobile') {
+      &.mobile-nowrap { @include flex-wrap('nowrap'); }
+      &.mobile-wrap { @include flex-wrap('wrap'); }
+      &.mobile-wrapReverse { @include flex-wrap('wrap-reverse'); }
+    }
+    // </>
 
 
 
-		// <>
-		// -- Justify Content --
-		// on Every Screen
-		&.justifyContent-start { @include justify-content('flex-start'); }
-		&.justifyContent-end { @include justify-content('flex-end'); }
-		&.justifyContent-center { @include justify-content('center'); }
-		&.justifyContent-between { @include justify-content('space-between'); }
-		&.justifyContent-around { @include justify-content('space-around'); }
-		// on only Desktop devices
-		@include media-screen('desktop') {
-			&.desktop-justifyContent-start { @include justify-content('flex-start'); }
-			&.desktop-justifyContent-end { @include justify-content('flex-end'); }
-			&.desktop-justifyContent-center { @include justify-content('center'); }
-			&.desktop-justifyContent-between { @include justify-content('space-between'); }
-			&.desktop-justifyContent-around { @include justify-content('space-around'); }
-		}
-		// on only Tablet devices
-		@include media-screen('tablet') {
-			&.tablet-justifyContent-start { @include justify-content('flex-start'); }
-			&.tablet-justifyContent-end { @include justify-content('flex-end'); }
-			&.tablet-justifyContent-center { @include justify-content('center'); }
-			&.tablet-justifyContent-between { @include justify-content('space-between'); }
-			&.tablet-justifyContent-around { @include justify-content('space-around'); }
-		}
-		// on only Mobile devices
-		@include media-screen('mobile') {
-			&.mobile-justifyContent-start { @include justify-content('flex-start'); }
-			&.mobile-justifyContent-end { @include justify-content('flex-end'); }
-			&.mobile-justifyContent-center { @include justify-content('center'); }
-			&.mobile-justifyContent-between { @include justify-content('space-between'); }
-			&.mobile-justifyContent-around { @include justify-content('space-around'); }
-		}
-		// </>
+    // <>
+    // -- Align Items --
+    // on Every Screen
+    &.alignItems-stretch { @include align-items('stretch'); }
+    &.alignItems-center { @include align-items('center'); }
+    &.alignItems-start { @include align-items('flex-start'); }
+    &.alignItems-end { @include align-items('flex-end'); }
+    &.alignItems-baseline { @include align-items('baseline'); }
+    // on only Desktop devices
+    @include media-screen('desktop') {
+      &.desktop-alignItems-stretch { @include align-items('stretch'); }
+      &.desktop-alignItems-center { @include align-items('center'); }
+      &.desktop-alignItems-start { @include align-items('flex-start'); }
+      &.desktop-alignItems-end { @include align-items('flex-end'); }
+      &.desktop-alignItems-baseline { @include align-items('baseline'); }
+    }
+    // on only Tablet devices
+    @include media-screen('tablet') {
+      &.tablet-alignItems-stretch { @include align-items('stretch'); }
+      &.tablet-alignItems-center { @include align-items('center'); }
+      &.tablet-alignItems-start { @include align-items('flex-start'); }
+      &.tablet-alignItems-end { @include align-items('flex-end'); }
+      &.tablet-alignItems-baseline { @include align-items('baseline'); }
+    }
+    // on only Mobile devices
+    @include media-screen('mobile') {
+      &.mobile-alignItems-stretch { @include align-items('stretch'); }
+      &.mobile-alignItems-center { @include align-items('center'); }
+      &.mobile-alignItems-start { @include align-items('flex-start'); }
+      &.mobile-alignItems-end { @include align-items('flex-end'); }
+      &.mobile-alignItems-baseline { @include align-items('baseline'); }
+    }
+    // </>
 
 
 
-		// <>
-		// -- Align Content --
-		// on Every Screen
-		&.alignContent-stretch { @include align-content('stretch'); }
-		&.alignContent-center { @include align-content('center'); }
-		&.alignContent-start { @include align-content('flex-start'); }
-		&.alignContent-end { @include align-content('flex-end'); }
-		&.alignContent-between { @include align-content('space-between'); }
-		&.alignContent-around { @include align-content('space-around'); }
-		// on only Desktop devices
-		@include media-screen('desktop') {
-			&.desktop-alignContent-stretch { @include align-content('stretch'); }
-			&.desktop-alignContent-center { @include align-content('center'); }
-			&.desktop-alignContent-start { @include align-content('flex-start'); }
-			&.desktop-alignContent-end { @include align-content('flex-end'); }
-			&.desktop-alignContent-between { @include align-content('space-between'); }
-			&.desktop-alignContent-around { @include align-content('space-around'); }
-		}
-		// on only Tablet devices
-		@include media-screen('tablet') {
-			&.tablet-alignContent-stretch { @include align-content('stretch'); }
-			&.tablet-alignContent-center { @include align-content('center'); }
-			&.tablet-alignContent-start { @include align-content('flex-start'); }
-			&.tablet-alignContent-end { @include align-content('flex-end'); }
-			&.tablet-alignContent-between { @include align-content('space-between'); }
-			&.tablet-alignContent-around { @include align-content('space-around'); }
-		}
-		// on only Mobile devices
-		@include media-screen('mobile') {
-			&.mobile-alignContent-stretch { @include align-content('stretch'); }
-			&.mobile-alignContent-center { @include align-content('center'); }
-			&.mobile-alignContent-start { @include align-content('flex-start'); }
-			&.mobile-alignContent-end { @include align-content('flex-end'); }
-			&.mobile-alignContent-between { @include align-content('space-between'); }
-			&.mobile-alignContent-around { @include align-content('space-around'); }
-		}
-		// </>
+    // <>
+    // -- Justify Content --
+    // on Every Screen
+    &.justifyContent-start { @include justify-content('flex-start'); }
+    &.justifyContent-end { @include justify-content('flex-end'); }
+    &.justifyContent-center { @include justify-content('center'); }
+    &.justifyContent-between { @include justify-content('space-between'); }
+    &.justifyContent-around { @include justify-content('space-around'); }
+    // on only Desktop devices
+    @include media-screen('desktop') {
+      &.desktop-justifyContent-start { @include justify-content('flex-start'); }
+      &.desktop-justifyContent-end { @include justify-content('flex-end'); }
+      &.desktop-justifyContent-center { @include justify-content('center'); }
+      &.desktop-justifyContent-between { @include justify-content('space-between'); }
+      &.desktop-justifyContent-around { @include justify-content('space-around'); }
+    }
+    // on only Tablet devices
+    @include media-screen('tablet') {
+      &.tablet-justifyContent-start { @include justify-content('flex-start'); }
+      &.tablet-justifyContent-end { @include justify-content('flex-end'); }
+      &.tablet-justifyContent-center { @include justify-content('center'); }
+      &.tablet-justifyContent-between { @include justify-content('space-between'); }
+      &.tablet-justifyContent-around { @include justify-content('space-around'); }
+    }
+    // on only Mobile devices
+    @include media-screen('mobile') {
+      &.mobile-justifyContent-start { @include justify-content('flex-start'); }
+      &.mobile-justifyContent-end { @include justify-content('flex-end'); }
+      &.mobile-justifyContent-center { @include justify-content('center'); }
+      &.mobile-justifyContent-between { @include justify-content('space-between'); }
+      &.mobile-justifyContent-around { @include justify-content('space-around'); }
+    }
+    // </>
 
-		// <> Wrapper Box Properties
-		.pxl {
-			display: block;
-			min-height: 1px;
-			position: relative;
-			@include order();
-			@include flex-grow();
-			@include flex-shrink();
-			@include flex-basis();
-			@include align-self();
-			@include padding(x '#{$dopxl-inGutter}');
-			@include padding(y '#{$dopxl-inGutter}');
-			
-			// Desktop
-			@include media-screen('desktop') {
-				@for $i from 1 through 12 {
-					$basis: (100 / 12) * $i;
-					&.desktop-#{$i} { @include flex-basis('#{$basis}%'); }
-					&.desktop-push-#{$i} { @include margin(left '#{$basis}%'); }
-					&.desktop-pull-#{$i} { @include margin(left '-#{$basis}%'); }
-					&.desktop-order-#{$i} { @include order($i); }
-				}
-			}
-		}
-		// </> Wrapper Box Properties
-	}
+
+
+    // <>
+    // -- Align Content --
+    // on Every Screen
+    &.alignContent-stretch { @include align-content('stretch'); }
+    &.alignContent-center { @include align-content('center'); }
+    &.alignContent-start { @include align-content('flex-start'); }
+    &.alignContent-end { @include align-content('flex-end'); }
+    &.alignContent-between { @include align-content('space-between'); }
+    &.alignContent-around { @include align-content('space-around'); }
+    // on only Desktop devices
+    @include media-screen('desktop') {
+      &.desktop-alignContent-stretch { @include align-content('stretch'); }
+      &.desktop-alignContent-center { @include align-content('center'); }
+      &.desktop-alignContent-start { @include align-content('flex-start'); }
+      &.desktop-alignContent-end { @include align-content('flex-end'); }
+      &.desktop-alignContent-between { @include align-content('space-between'); }
+      &.desktop-alignContent-around { @include align-content('space-around'); }
+    }
+    // on only Tablet devices
+    @include media-screen('tablet') {
+      &.tablet-alignContent-stretch { @include align-content('stretch'); }
+      &.tablet-alignContent-center { @include align-content('center'); }
+      &.tablet-alignContent-start { @include align-content('flex-start'); }
+      &.tablet-alignContent-end { @include align-content('flex-end'); }
+      &.tablet-alignContent-between { @include align-content('space-between'); }
+      &.tablet-alignContent-around { @include align-content('space-around'); }
+    }
+    // on only Mobile devices
+    @include media-screen('mobile') {
+      &.mobile-alignContent-stretch { @include align-content('stretch'); }
+      &.mobile-alignContent-center { @include align-content('center'); }
+      &.mobile-alignContent-start { @include align-content('flex-start'); }
+      &.mobile-alignContent-end { @include align-content('flex-end'); }
+      &.mobile-alignContent-between { @include align-content('space-between'); }
+      &.mobile-alignContent-around { @include align-content('space-around'); }
+    }
+    // </>
+
+    // <> Wrapper Box Properties
+    .pxl {
+      display: block;
+      min-height: 1px;
+      position: relative;
+      @include order();
+      @include flex-grow();
+      @include flex-shrink();
+      @include flex-basis();
+      @include align-self();
+      @include padding(x '#{$dopxl-inGutter}');
+      @include padding(y '#{$dopxl-inGutter}');
+      
+      // Desktop
+      @include media-screen('desktop') {
+        @for $i from 1 through 12 {
+          $basis: (100 / 12) * $i;
+          &.desktop-#{$i} { @include flex-basis('#{$basis}%'); }
+          &.desktop-push-#{$i} { @include margin(left '#{$basis}%'); }
+          &.desktop-pull-#{$i} { @include margin(left '-#{$basis}%'); }
+          &.desktop-order-#{$i} { @include order($i); }
+        }
+      }
+    }
+    // </> Wrapper Box Properties
+  }
 }
 
 .element {
-	@include background(color '#212121');
-	font-family: nth($dopxl-fonts, 2);
-	font-size: 48px;
-	text-align: center;
-	color: #F5F5F5;
+  @include background(color '#212121');
+  font-family: nth($dopxl-fonts, 2);
+  font-size: 48px;
+  text-align: center;
+  color: #F5F5F5;
 }

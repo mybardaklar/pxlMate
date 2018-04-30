@@ -13,9 +13,9 @@
 // @include prefix('box-sizing', 'border-box');
 // -----------------------------------------------------------------------------
 @mixin _prefix($property, $value, $important: false, $vendors: null) {
-	@if $vendors == null { $vendors: ('webkit', 'moz', 'ms', 'o'); }
-	@each $vendor in $vendors {
-		-#{unquote($vendor)}-#{unquote($property)}: #{unquote($value)} _important($important);
-	}
-	#{unquote($property)}: #{unquote($value)} _important($important);
+  @if $vendors == null { $vendors: ('webkit', 'moz', 'ms', 'o'); }
+  @each $vendor in $vendors {
+    -#{unquote($vendor)}-#{unquote($property)}: #{unquote($value)} _important($important);
+  }
+  #{unquote($property)}: #{unquote($value)} _important($important);
 }

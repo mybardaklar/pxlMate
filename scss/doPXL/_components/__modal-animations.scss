@@ -1,96 +1,96 @@
 .pxl-modal {
 
-	// Slide down animation
-	&.animation-slideDown {
-		.pxl-modal_on:checked {
-			& ~ .pxl-modal_container {
-				.pxl-modal_inner {
-					@include transform('translateY(0)');
-				}
-			}
-		}
-		.pxl-modal_container {
-			.pxl-modal_inner {
-				@include transform('translateY(-100%)');
-			}
-		}
-	}
+  // Slide down animation
+  &.animation-slideDown {
+    .pxl-modal_on:checked {
+      & ~ .pxl-modal_container {
+        .pxl-modal_inner {
+          @include transform('translateY(0)');
+        }
+      }
+    }
+    .pxl-modal_container {
+      .pxl-modal_inner {
+        @include transform('translateY(-100%)');
+      }
+    }
+  }
 
-	// Slide up animation
-	&.animation-slideUp {
-		.pxl-modal_on:checked {
-			& ~ .pxl-modal_container {
-				.pxl-modal_inner {
-					@include transform('translateY(0)');
-				}
-			}
-		}
-		.pxl-modal_container {
-			.pxl-modal_inner {
-				@include transform('translateY(100%)');
-			}
-		}
-	}
+  // Slide up animation
+  &.animation-slideUp {
+    .pxl-modal_on:checked {
+      & ~ .pxl-modal_container {
+        .pxl-modal_inner {
+          @include transform('translateY(0)');
+        }
+      }
+    }
+    .pxl-modal_container {
+      .pxl-modal_inner {
+        @include transform('translateY(100%)');
+      }
+    }
+  }
 
-	// Slide in down animation
-	&.animation-slideInDown {
-		.pxl-modal_on:checked {
-			& ~ .pxl-modal_container {
-				.pxl-modal_inner {
-					@include animation($name: 'pxl-modal-slideInDown', $duration: '1s', $timing-function: 'ease-in-out');
-					@include keyframes('pxl-modal-slideInDown') {
-						0% {
-							@include transform('translateY(-100%)');
-						}
-						20% {
-							@include transform('translateY(100%)');
-						}
-						40% {
-							@include transform('translateY(-50%)');
-						}
-						60% {
-							@include transform('translateY(25%)');
-						}
-						80% {
-							@include transform('translateY(-25%)');
-						}
-						100% {
-							@include transform('translateY(0)');
-						}
-					}
-				}
-			}
-		}
-	}
+  // Slide in down animation
+  &.animation-slideInDown {
+    .pxl-modal_on:checked {
+      & ~ .pxl-modal_container {
+        .pxl-modal_inner {
+          @include animation($name: 'pxl-modal-slideInDown', $duration: '1s', $timing-function: 'ease-in-out');
+          @include keyframes('pxl-modal-slideInDown') {
+            0% {
+              @include transform('translateY(-100%)');
+            }
+            20% {
+              @include transform('translateY(100%)');
+            }
+            40% {
+              @include transform('translateY(-50%)');
+            }
+            60% {
+              @include transform('translateY(25%)');
+            }
+            80% {
+              @include transform('translateY(-25%)');
+            }
+            100% {
+              @include transform('translateY(0)');
+            }
+          }
+        }
+      }
+    }
+  }
 
-	// Slide in down animation
-	&.animation-slideInUp {
-		.pxl-modal_on:checked {
-			& ~ .pxl-modal_container {
-				.pxl-modal_inner {
-					@include animation($name: 'pxl-modal-slideInUp', $duration: '1s', $timing-function: 'ease-in-out');
-					@include keyframes('pxl-modal-slideInUp') {
-						0% {
-							@include transform('translateY(100%)');
-						}
-						20% {
-							@include transform('translateY(-50%)');
-						}
-						40% {
-							@include transform('translateY(50%)');
-						}
-						60% {
-							@include transform('translateY(-25%)');
-						}
-						80% {
-							@include transform('translateY(25%)');
-						}
-						100% {
-							@include transform('translateY(0)');
-						}
-					}
-				}
-			}
-		}
-	}
+  // Slide in down animation
+  &.animation-slideInUp {
+    .pxl-modal_on:checked {
+      & ~ .pxl-modal_container {
+        .pxl-modal_inner {
+          @include animation($name: 'pxl-modal-slideInUp', $duration: '1s', $timing-function: 'ease-in-out');
+          @include keyframes('pxl-modal-slideInUp') {
+            0% {
+              @include transform('translateY(100%)');
+            }
+            20% {
+              @include transform('translateY(-50%)');
+            }
+            40% {
+              @include transform('translateY(50%)');
+            }
+            60% {
+              @include transform('translateY(-25%)');
+            }
+            80% {
+              @include transform('translateY(25%)');
+            }
+            100% {
+              @include transform('translateY(0)');
+            }
+          }
+        }
+      }
+    }
+  }
 }

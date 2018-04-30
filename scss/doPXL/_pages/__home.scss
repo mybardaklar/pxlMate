@@ -1,53 +1,53 @@
 #body {
-	@include wh100;
-	background-color: _color('bg');
+  @include wh100;
+  background-color: _color('bg');
 
-	.menu {
-		background-color: _color(2);
-		font-size: 0;
-		text-align: center;
-		a {
-			display: inline-block;
-			font-size: $font-size;
-			color: #fff;
-			margin: 10px;
+  .menu {
+    background-color: _color(2);
+    font-size: 0;
+    text-align: center;
+    a {
+      display: inline-block;
+      font-size: $font-size;
+      color: #fff;
+      margin: 10px;
 
-			&:hover {
-				text-shadow: 0 0 3px rgba(#fff, 1);
-			}
+      &:hover {
+        text-shadow: 0 0 3px rgba(#fff, 1);
+      }
 
-			@include media('down', _get($breakpoints, 'mobile')) {
-				display: block;
-			}
-		}
-	}
+      @include media('down', _get($breakpoints, 'mobile')) {
+        display: block;
+      }
+    }
+  }
 
-	.wrapper {
-		max-width: 100%;
-		width: $container-width;
-		@include margin($x: 'auto', $y: 15px);
+  .wrapper {
+    max-width: 100%;
+    width: $container-width;
+    @include margin($x: 'auto', $y: 15px);
 
-		.row {
-			@include flexible('display:flex,wrap: wrap,justify-content:around');
+    .row {
+      @include flexible('display:flex,wrap: wrap,justify-content:around');
 
-			.col {
-				@include flexible-item('basis: 25%');
-				@include margin($y: 15px);
+      .col {
+        @include flexible-item('basis: 25%');
+        @include margin($y: 15px);
 
-				span.col-item {
-					display: block;
-					text-align: center;
-					padding: 30px;
-					background-color: #fff;
-					color: _color(1);
-					font-weight: bold;
-					@include box-shadow(
-						$v		: 3px,
-						$blur	: 10px,
-						$color: rgba(#fff, .5)
-					);
-				}
-			}
-		}
-	}
+        span.col-item {
+          display: block;
+          text-align: center;
+          padding: 30px;
+          background-color: #fff;
+          color: _color(1);
+          font-weight: bold;
+          @include box-shadow(
+            $v		: 3px,
+            $blur	: 10px,
+            $color: rgba(#fff, .5)
+          );
+        }
+      }
+    }
+  }
 }

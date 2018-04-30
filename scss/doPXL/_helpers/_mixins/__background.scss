@@ -24,23 +24,23 @@
 // );
 // -----------------------------------------------------------------------------
 @mixin background($image: null, $position: null, $size: null, $repeat: null, $attachment: null, $origin: null, $clip: null, $color: null, $important: false) {
-	$properties: (
-		'image' $image,
-		'position' $position,
-		'size' $size,
-		'repeat' $repeat,
-		'attachment' $attachment,
-		'origin' $origin,
-		'clip' $clip,
-		'color' $color
-	);
-	@each $property, $value in $properties {
-		@if $value {
-			@if $property == 'image' {
-				background-#{unquote($property)}: #{'url(' + unquote($value) + ')'} _important($important);
-			} @else {
-				background-#{unquote($property)}: #{unquote($value)} _important($important);
-			}
-		}
-	}
+  $properties: (
+    'image' $image,
+    'position' $position,
+    'size' $size,
+    'repeat' $repeat,
+    'attachment' $attachment,
+    'origin' $origin,
+    'clip' $clip,
+    'color' $color
+  );
+  @each $property, $value in $properties {
+    @if $value {
+      @if $property == 'image' {
+        background-#{unquote($property)}: #{'url(' + unquote($value) + ')'} _important($important);
+      } @else {
+        background-#{unquote($property)}: #{unquote($value)} _important($important);
+      }
+    }
+  }
 }
