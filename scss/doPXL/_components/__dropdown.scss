@@ -1,0 +1,80 @@
+.pxl_dropdown {
+	display: inline-block;
+	position: relative;
+
+	input[type="radio"].pxl_dropdown-on,
+	input[type="radio"].pxl_dropdown-off {
+		display: none;
+	}
+
+	input[type="radio"].pxl_dropdown-on {
+		&:checked {
+			& ~ .pxl_dropdown_container {
+				
+				label.pxl_dropdown_trigger {
+					background-color: _color(3);
+					//font-weight: bold;
+				}
+
+				ul.pxl_dropdown_menu {
+					visibility: visible;
+					opacity: 1;
+				}
+			}
+
+			& ~ label.pxl_dropdown_bg {
+				visibility: visible;
+				opacity: 1;
+			}
+		}
+	}
+
+	.pxl_dropdown_container {
+		position: relative;
+
+		label.pxl_dropdown_trigger {
+			display: inline-block;
+			font-size: 14px;
+			padding: 10px;
+			color: #fff;
+			cursor: pointer;
+		}
+
+		ul.pxl_dropdown_menu {
+			visibility: hidden;
+			opacity: 0;
+			margin: 0;
+			padding: 0;
+			list-style: none;
+			background-color: _color(3);
+			@include position('absolute', $top: 100%, $right: 0);
+			z-index: _get($zindex, 'dropdown');
+			@include transition(
+				$property				: 'all',
+				$duration				: '.4s',
+				$timing-function: 'ease-in-out'
+			);
+
+			li {
+				font-size: 14px;
+				padding: 10px;
+				color: #fff;
+				text-align: center;
+				position: relative;
+			}
+		}
+	}
+
+	label.pxl_dropdown_bg {
+		background-color: transparent;
+		@include position('fixed', 0);
+		z-index: _get($zindex, 'dropdown_bg');
+		visibility: hidden;
+		opacity: 0;
+		@include transition(
+			$property				: 'all',
+			$duration				: '.4s',
+			$timing-function: 'ease-in-out'
+		);
+	}
+}

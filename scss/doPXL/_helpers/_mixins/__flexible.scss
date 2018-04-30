@@ -1,0 +1,83 @@
+// -----------------------------------------------------------------------------
+// SCSS flexible Mixin from doPXL
+// -----------------------------------------------------------------------------
+// Syntax:
+// @include flexible($args);
+// -----------------------------------------------------------------------------
+// display				: flex|inline-flex|none|initial|inherit;
+// direction			: row|row-reverse|column|column-reverse|initial|inherit;
+// wrap						: nowrap|wrap|wrap-reverse|initial|inherit;
+// justify-content: flex-start|flex-end|center|space-between|space-around|initial|inherit;
+// align-items		: stretch|center|flex-start|flex-end|baseline|initial|inherit;
+// align-content	: stretch|center|flex-start|flex-end|space-between|space-around|initial|inherit;
+// -----------------------------------------------------------------------------
+// Example in usage:
+// @include flexible('display: flex, direction: col !important, justify-content: center');
+// -----------------------------------------------------------------------------
+@mixin flexible($args) {
+	@if $args and $args != '' {
+		$properties: _property-partition($args);
+		@each $item in $properties {
+			$property: unquote(_get($item, 'property'));
+			$value: unquote(_get($item, 'value'));
+			$important: unquote(_get($item, 'important'));
+			
+			@if $property == 'display' {
+				@include flexbox($value, $important);
+			} @if $property == 'direction' {
+				@include flex-direction($value, $important);
+			} @if $property == 'wrap' {
+				@include flex-wrap($value, $important);
+			} @if $property == 'justify-content' {
+				@include justify-content($value, $important);
+			} @if $property == 'align-items' {
+				@include align-items($value, $important);
+			} @if $property == 'align-content' {
+				@include align-content($value, $important);
+			}
+		}
+	}
+}
+
+// -----------------------------------------------------------------------------
+// SCSS flexible-item Mixin from doPXL
+// -----------------------------------------------------------------------------
+// Syntax:
+// @include flexible-item($order: null, $grow: null, $shrink: null, $basis: null, $align-self: null, $important: false);
+// -----------------------------------------------------------------------------
+// $order		 : number|initial|inherit;
+// $grow		 : number|initial|inherit;
+// $shrink	 : number|initial|inherit;
+// $basis		 : number|auto|initial|inherit;
+// $align		 : auto|stretch|center|flex-start|flex-end|baseline|initial|inherit;
+// $important: true|false;
+// -----------------------------------------------------------------------------
+// Example in usage:
+// @include flexible-item(
+//   $grow : 1,
+//   $basis:	45%,
+//   $align: 'center'
+// );
+// -----------------------------------------------------------------------------
+@mixin flexible-item($args) {
+	@if $args and $args != '' {
+		$properties: _property-partition($args);
+		@each $item in $properties {
+			$property: unquote(_get($item, 'property'));
+			$value: unquote(_get($item, 'value'));
+			$important: unquote(_get($item, 'important'));
+			
+			@if $property == 'order' {
+				@include order($value, $important);
+			} @if $property == 'grow' {
+				@include flex-grow($value, $important);
+			} @if $property == 'shrink' {
+				@include flex-shrink($value, $important);
+			} @if $property == 'basis' {
+				@include flex-basis($value, $important);
+			} @if $property == 'align-self' {
+				@include align-self($value, $important);
+			}
+		}
+	}
+}

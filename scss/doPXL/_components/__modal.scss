@@ -1,0 +1,155 @@
+.pxl-modal {
+	max-width: 100%;
+	max-height: 100%;
+	// modal input radios
+	.pxl-modal_on,
+	.pxl-modal_off {
+		display: none;
+	}
+
+	// settings to when opened modal
+	.pxl-modal_on:checked {
+		// modal when opened modal
+		& ~ .pxl-modal_container {
+			@include visible(true);
+		}
+	}
+
+	&[class*="animation-"] {
+		.pxl-modal_container,
+		.pxl-modal_bg,
+		.pxl-modal_inner {
+			@include transition('all', '.3s');
+		}
+		@include transition('all', '.3s');
+	}
+
+	// modal container
+	.pxl-modal_container {
+		@include wh100;
+		@include visible(false);
+		@include flexible('display: flex, justify-content: center, align-items: start');
+		@include position('fixed', $top: 0, $left: 0, $z-index: _get($zindex, 'modal_bg'));
+		@include padding(30px);
+
+		// modal background
+		label.pxl-modal_bg {
+			@include position('absolute', $top: 0, $left: 0, $z-index: _get($zindex, 'modal_bg'));
+			@include wh100;
+			background-color: _get($modal, 'bg_color');
+		}
+	}
+	
+	// modal positions
+	$modal-positions:
+	(
+		('top', 'start', ''),
+		('top-left', 'start', 'start'),
+		('top-center', 'start', 'center'),
+		('top-right', 'start', 'end'),
+		('center', 'center', ''),
+		('center-left', 'center', 'start'),
+		('center-center', 'center', 'center'),
+		('center-right', 'center', 'end'),
+		('bottom', 'end', ''),
+		('bottom-left', 'end', 'start'),
+		('bottom-center', 'end', 'center'),
+		('bottom-right', 'end', 'end')
+	);
+	@each $list in $modal-positions {
+		$class-name: unquote(_get($list, 1));
+		$vertical  : unquote(_get($list, 2));
+		$horizontal: unquote(_get($list, 3));
+
+		&.position-#{unquote($class-name)} {
+			.pxl-modal_container {
+				//@include align-items($vertical);
+				@include flexible('align-items: #{$vertical}');
+				@if($horizontal) {
+					//@include justify-content($horizontal);
+					@include flexible('justify-content: #{$horizontal}');
+				}
+			}
+		}
+	}
+}
+
+// modal inner
+.pxl-modal_inner {
+	@include position('relative', $z-index: _get($zindex, 'modal'));
+	@include flexible('display: flex, direction: col');
+	@include box-shadow(
+		$v: 3px,
+		$blur: 5px,
+		$color: rgba(#222f3e, .5)
+	);
+	@include transition(
+		$property				: 'all',
+		$duration				: '.25s',
+		$timing-function: 'ease-in-out'
+	);
+	width: _get($modal, 'width');
+	max-width: 100%;
+	height: _get($modal, 'height');
+	max-height: 100%;
+}
+
+// modal header
+.pxl-modal_header {
+	@include flexible('display: flex, justify-content: between, align-items: center');
+	border-bottom: 2px solid #c8d6e5;
+	@include padding($x: 20px, $y: 10px);
+	min-height: _get($modal, 'header-height');
+	background-color: #d2dae2;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+	
+	h3 {
+		@include mp0;
+		@include flexible-item('grow: 1, basis: 100%');
+		color: #8395a7;
+	}
+
+	label.pxl-modal_close {
+		@include flexible-item('grow: 1');
+		text-align: center;
+		cursor: pointer;
+
+		&::before {
+			content: '\f410';
+			font-family: _font('fa');
+			font-size: 24px;
+			color: #8395a7;
+		}
+		
+		&:hover::before {
+			content: '\f410';
+			font-weight: 900;
+		}
+	}
+}
+
+// modal body
+.pxl-modal_body {
+	@include wh100;
+	min-height: 50px;
+	background-color: #fff;
+	overflow: auto;
+	padding: 10px;
+
+	p {
+		margin: 10px;
+		padding: 0;
+	}
+}
+
+
+#body {
+	&.pxl-modal-bg_blur { @include filter('blur(10px)'); }
+	&.pxl-modal-bg_scale { @include transform('scale(0)'); }
+	@include transition(
+		$property				: 'all',
+		$duration				: '.25s',
+		$timing-function: 'ease-in-out'
+	);
+}

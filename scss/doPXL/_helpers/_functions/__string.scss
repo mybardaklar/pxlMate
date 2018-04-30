@@ -1,0 +1,60 @@
+@function _first-index($str, $direction: 'left') {
+	@for $i from 1 through str-length($str) {
+		$index: if($direction == 'left', $i, -$i);
+		@if str-slice($str, $index, $index) != ' ' {
+			@return $index;
+		}
+	}
+	@return 0;
+}
+
+@function _trim($str, $direction: 'both') {
+	@if $direction == 'left' {
+		@return str-slice(
+			$string,
+			_first-index($str, 'left'),
+			str-length($str)
+		);
+	} @else if $direction == 'right' {
+		@return str-slice(
+			$string,
+			0,
+			_first-index($str, 'right')
+		);
+	} @else if $direction == 'both' {
+		@return str-slice(
+			$str,
+			_first-index($str, 'left'),
+			_first-index($str, 'right')
+		);
+	}
+}
+
+@function _str-to-list($str, $seperator: ',', $start: 1) {
+	$current-str: str-slice($str, $start);
+	$list: ();
+	$item-index: str-index($current-str, $seperator);
+	@if $item-index == null {
+		$list: ($current-str);
+	} @else {
+		$list: (str-slice($current-str, 1, $item-index - 1));
+		$list: join($list, _str-to-list($current-str, $start: $item-index + 1));
+	}
+	@return $list;
+}
+
+@function _property-partition($args) {
+	$args: _str-to-list($args, ',');
+	$list: ();
+	@each $item in $args {
+		$property-list: _str-to-list($item, ':');
+		$property			: _trim(_get($property-list, 1));
+		$value				: _get($property-list, 2);
+		$value				: _important-str($value);
+		$new-value		: _get($value, 'value');
+		$new-value		: _trim($new-value);
+		$important		: _get($value, 'important');
+		$list: append($list, ('property': $property, 'value': $new-value, 'important': $important));
+	}
+	@return $list;
+}
