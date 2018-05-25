@@ -1,17 +1,11 @@
-// Helpers (variables, functions, mixins...)
-@import '_helpers/_init';
+// Base Folder
+@import 'Base/_init.scss';
 
-// Base
-@import '_base/_init';
+// Vendors (e.g.: Bootstrap)
+@import 'Vendors/_init.scss';
 
-// Vendors (Bootstrap or Materialize)
-@import '_vendors/_init';
+// UI Elements (Components & Layouts)
+@import 'UI/_init.scss';
 
-// Components (buttons, modals, dropdowns...)
-@import '_components/_init';
-
-// Layout (grid, header, footer...)
-@import '_layout/_init';
-
-// Pages (home, about, contact...)
-@import '_pages/_init';
+// Pages
+@import 'Pages/_init.scss';

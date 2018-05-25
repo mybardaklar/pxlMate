@@ -1,0 +1,19 @@
+// Breakpoint Settings
+$breakpoints: (
+  'desktop': 1024px,
+  'tablet' : 768px,
+  'mobile' : 767px
+);
+
+
+// Grid Settings
+$container-width: 1024px;
+$innerGutter		: 10px;
+$outerGutter		: 10px;
+
+
+// Modal Settings
+$modal-overlay      : rgba(#222f3e, .5);
+$modal-width        : 800px;
+$modal-height       : 250px;
+$modal-header-height: 50px;

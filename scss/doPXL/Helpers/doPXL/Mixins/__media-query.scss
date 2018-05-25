@@ -11,7 +11,7 @@
 // Example in usage:
 // @include media('between', (480px, 768px)) {...}
 // -----------------------------------------------------------------------------
-@mixin media($from: null, $size: null, $type: 'screen') {
+@mixin breakpoint($from: null, $size: null, $type: 'screen') {
   @if $from == 'up' {
     @media only #{unquote($type)} and (min-width: $size) { @content; }
   } @else if $from == 'down' {

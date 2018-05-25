@@ -1,0 +1,24 @@
+// Color Variables
+$color-1: #ff4d4d;
+$color-2: #4b4b4b;
+$color-3: #7d5fff;
+
+$color-bg  : #ff4d4d;
+$color-text: #4b4b4b;
+$color-link: #7d5fff;
+
+
+// Font Variables
+$font-1: unquote('\'Open Sans\', sans-serif');
+$font-2: unquote('\'Roboto\', sans-serif');
+
+$font-default-size: 14px;
+$font-title-size  : 24px;
+
+
+// Z-index Variables
+$z-index-navbar          : 10;
+$z-index-dropdown-overlay: 20;
+$z-index-dropdown        : 30;
+$z-index-modal-overlay   : 40;
+$z-index-modal           : 50;
