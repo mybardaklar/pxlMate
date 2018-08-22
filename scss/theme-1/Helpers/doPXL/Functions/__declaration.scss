@@ -1,0 +1,82 @@
+// -----------------------------------------------------------------------------
+// -- SCSS _important-control Function from doPXL
+// -----------------------------------------------------------------------------
+// -- Description:
+// Lorem ipsum
+// -----------------------------------------------------------------------------
+// -- Syntax:
+// _important-control($value);
+// -----------------------------------------------------------------------------
+// -- Parameters:
+// $value { String } -> This parameter for
+// -----------------------------------------------------------------------------
+// -- Example in usage:
+// _important-control('#000 !important') -> ('value': '#000', 'important': true)
+// -----------------------------------------------------------------------------
+@function _important-control($value) {
+
+  $string		: '';
+  $index		: str-index($value, '!important');
+  $important: if($index, str-slice($value, $index, ($index + 10)), null);
+
+  @if $important == '!important' {
+    $index		: $index - 1;
+    $string		: str-slice($value, 0, $index);
+    $important: true;
+  } @else {
+    $string		: $value;
+    $important: false;
+  }
+
+  @return (
+    'value'		 : _trim($string),
+    'important': $important
+  );
+
+}
+
+// -----------------------------------------------------------------------------
+// -- SCSS _declaration Function from doPXL
+// -----------------------------------------------------------------------------
+// -- Description:
+// Lorem ipsum
+// -----------------------------------------------------------------------------
+// -- Syntax:
+// _declaration($args, $seperator: ';', $bracketed: comma);
+// -----------------------------------------------------------------------------
+// -- Parameters:
+// $args { String } -> This parameter for
+// -----------------------------------------------------------------------------
+// -- Example in usage:
+// _declaration('margin: 15px, padding: 20px !important', ',') ->
+// (
+//   ("property": "margin", "value": "15px", "important": false),
+//   ("property": "padding", "value": "5px", "important": true)
+// )
+// -----------------------------------------------------------------------------
+@function _declaration($args, $seperator: ';', $bracketed: comma) {
+
+  @if $args and $args != '' {
+    $args: _str-to-list($args, $seperator: $seperator);
+    $list: ();
+    
+    @each $declaration in $args {
+      $declaration      : _trim($declaration);
+      $declaration      : _str-to-list($declaration, ':');
+
+      $property			    : _trim(_get($declaration, 1));
+      $value				    : _trim(_get($declaration, 2));
+
+      $important-control: _important-control($value);
+      $value            : _get($important-control, 'value');
+      $important        : _get($important-control, 'important');
+
+      $list: append($list, ('property': $property, 'value': $value, 'important': $important), $bracketed);
+    }
+    
+    @return $list;
+  } @else {
+    @error '_declaration($args) ERROR! First parameter cannot be empty.';
+  }
+
+}

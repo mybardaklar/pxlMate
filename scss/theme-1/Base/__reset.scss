@@ -8,10 +8,10 @@
 
 html, body {
   @include wh100;
-  background-color: #000;
-  font-size: $font-size;
-  font-family: _font(1);
-  color: _color('font');
+  background-color: $color-bg;
+  font-size: $font-default-size;
+  font-family: $font-1;
+  color: $color-text;
 }
 
 a {

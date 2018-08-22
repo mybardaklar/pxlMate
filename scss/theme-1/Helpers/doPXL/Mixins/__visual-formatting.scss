@@ -35,27 +35,28 @@
 // Example in usage:
 // @include margin($all: '10px', $y: '25px', $x: '55px', $bottom: '100px');
 // -----------------------------------------------------------------------------
-@mixin margin($all: null, $x: null, $y: null, $top: null, $right: null, $bottom: null, $left: null, $important: false) {
-  $marginProperties: 'top' $top, 'right' $right, 'bottom' $bottom, 'left' $left;
-  @each $property, $value in $marginProperties {
-    @if $value == null {
-      @if $all != null {
-        @if $x != null and ($property == 'right' or $property == 'left') {
-          margin-#{unquote($property)}: #{unquote($x)} _important($important);
-        } @else if $y != null and ($property == 'top' or $property == 'bottom') {
-          margin-#{unquote($property)}: #{unquote($y)} _important($important);
-        } @else {
-          margin-#{unquote($property)}: #{unquote($all)} _important($important);
-        }
-      } @else {
-        @if $x != null and ($property == 'right' or $property == 'left') {
-          margin-#{unquote($property)}: #{unquote($x)} _important($important);
-        } @else if $y != null and ($property == 'top' or $property == 'bottom') {
-          margin-#{unquote($property)}: #{unquote($y)} _important($important);
-        }
-      }
-    } @else {
-      margin-#{unquote($property)}: #{unquote($value)} _important($important);
+@mixin margin($args) {
+  $declarations: _declaration($args);
+
+  @each $declaration in $declarations {
+    $property : unquote(_get($declaration, 'property'));
+    $value    : unquote(_get($declaration, 'value'));
+    $important: unquote(_get($declaration, 'important'));
+    
+    @if $property == 'x' or $property == 'h' or $property == 'horizontal' {
+      margin-right: $value _important($important);
+      margin-left: $value _important($important);
+    } @if $property == 'y' or $property == 'v' or $property == 'vertical' {
+      margin-top: $value _important($important);
+      margin-bottom: $value _important($important);
+    } @if $property == 'top' {
+      margin-top: $value _important($important);
+    } @if $property == 'right' {
+      margin-right: $value _important($important);
+    } @if $property == 'bottom' {
+      margin-bottom: $value _important($important);
+    } @if $property == 'left' {
+      margin-left: $value _important($important);
     }
   }
 }
@@ -78,27 +79,28 @@
 // Example in usage:
 // @include padding($all: '10px', $y: '25px', $x: '55px', $bottom: '100px');
 // -----------------------------------------------------------------------------
-@mixin padding($all: null, $x: null, $y: null, $top: null, $right: null, $bottom: null, $left: null, $important: false) {
-  $paddingProperties: 'top' $top, 'right' $right, 'bottom' $bottom, 'left' $left;
-  @each $property, $value in $paddingProperties {
-    @if $value == null {
-      @if $all != null {
-        @if $x != null and ($property == 'right' or $property == 'left') {
-          padding-#{unquote($property)}: #{unquote($x)} _important($important);
-        } @else if $y != null and ($property == 'top' or $property == 'bottom') {
-          padding-#{unquote($property)}: #{unquote($y)} _important($important);
-        }	@else {
-          padding-#{unquote($property)}: #{unquote($all)} _important($important);
-        }
-      } @else {
-        @if $x != null and ($property == 'right' or $property == 'left') {
-          padding-#{unquote($property)}: #{unquote($x)} _important($important);
-        } @else if $y != null and ($property == 'top' or $property == 'bottom') {
-          padding-#{unquote($property)}: #{unquote($y)} _important($important);
-        }
-      }
-    } @else {
-      padding-#{unquote($property)}: #{unquote($value)} _important($important);
+@mixin padding($args) {
+  $declarations: _declaration($args);
+
+  @each $declaration in $declarations {
+    $property : unquote(_get($declaration, 'property'));
+    $value    : unquote(_get($declaration, 'value'));
+    $important: unquote(_get($declaration, 'important'));
+    
+    @if $property == 'x' or $property == 'h' or $property == 'horizontal' {
+      padding-right: $value _important($important);
+      padding-left: $value _important($important);
+    } @if $property == 'y' or $property == 'v' or $property == 'vertical' {
+      padding-top: $value _important($important);
+      padding-bottom: $value _important($important);
+    } @if $property == 'top' {
+      padding-top: $value _important($important);
+    } @if $property == 'right' {
+      padding-right: $value _important($important);
+    } @if $property == 'bottom' {
+      padding-bottom: $value _important($important);
+    } @if $property == 'left' {
+      padding-left: $value _important($important);
     }
   }
 }
@@ -126,37 +128,41 @@
 //   $bottom	: 'auto'
 // );
 // -----------------------------------------------------------------------------
-@mixin position($property: 'static', $all: null, $z-index: null, $x: null, $y: null, $top: null, $right: null, $bottom: null, $left: null, $important: false) {
-  @if $property == 'sticky' {
+@mixin position($args) {
+  $properties: _str-to-list($args, ',');
+
+  $position  : _get($properties, 1);
+  $properties: _get($properties, 2);
+
+  @if $position == 'sticky' {
     position: -webkit-sticky;
     position: sticky;
   } @else {
-    position: #{unquote($property)};
+    position: unquote($position);
   }
-  $positionProperties: 'top' $top, 'right' $right, 'bottom' $bottom, 'left' $left;
-  @each $positionProperty, $value in $positionProperties {
-    @if $value == null {
-      @if $all != null {
-        @if $x != null and ($positionProperty == 'right' or $positionProperty == 'left') {
-          #{unquote($positionProperty)}: #{unquote($x)} _important($important);
-        } @else if $y != null and ($positionProperty == 'top' or $positionProperty == 'bottom') {
-          #{unquote($positionProperty)}: #{unquote($y)} _important($important);
-        } @else {
-          #{unquote($positionProperty)}: #{unquote($all)} _important($important);
-        }
-      } @else {
-        @if $x != null and ($positionProperty == 'right' or $positionProperty == 'left') {
-          #{unquote($positionProperty)}: #{unquote($x)} _important($important);
-        } @else if $y != null and ($positionProperty == 'top' or $positionProperty == 'bottom') {
-          #{unquote($positionProperty)}: #{unquote($y)} _important($important);
-        }
-      }
-    } @else {
-      #{unquote($positionProperty)}: #{unquote($value)} _important($important);
+
+  $declarations: _declaration($properties);
+  
+  @each $declaration in $declarations {
+    $property : unquote(_get($declaration, 'property'));
+    $value    : unquote(_get($declaration, 'value'));
+    $important: unquote(_get($declaration, 'important'));
+    
+    @if $property == 'x' or $property == 'h' or $property == 'horizontal' {
+      right: $value _important($important);
+      left: $value _important($important);
+    } @if $property == 'y' or $property == 'v' or $property == 'vertical' {
+      top: $value _important($important);
+      bottom: $value _important($important);
+    } @if $property == 'top' {
+      top: $value _important($important);
+    } @if $property == 'right' {
+      right: $value _important($important);
+    } @if $property == 'bottom' {
+      bottom: $value _important($important);
+    } @if $property == 'left' {
+      left: $value _important($important);
     }
-  }
-  @if $z-index {
-    z-index: unquote($z-index);
   }
 }
 

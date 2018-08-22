@@ -78,8 +78,19 @@
 // @include flex-wrap('wrap');
 // -----------------------------------------------------------------------------
 @mixin flex-wrap($value: 'nowrap', $important: false) {
-  -ms-flex-wrap: unquote($value) _important($important);
-  flex-wrap: unquote($value) _important($important);
+  @if $value == 'nowrap' or $value == false or $value == 0 {
+    -ms-flex-wrap: nowrap _important($important);
+    flex-wrap: nowrap _important($important);
+  } @else if $value == 'wrap' or $value == true or $value == 1 {
+    -ms-flex-wrap: wrap _important($important);
+    flex-wrap: wrap _important($important);
+  } @else if $value == 'wrap-reverse' or $value == reverse or $value == 2 {
+    -ms-flex-wrap: wrap-reverse _important($important);
+    flex-wrap: wrap-reverse _important($important);
+  } @else {
+    -ms-flex-wrap: unquote($value) _important($important);
+    flex-wrap: unquote($value) _important($important);
+  }
 }
 
 // -----------------------------------------------------------------------------

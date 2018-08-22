@@ -1,0 +1,106 @@
+// -----------------------------------------------------------------------------
+// -- SCSS _first-index Function from doPXL
+// -----------------------------------------------------------------------------
+// -- Description:
+// Lorem ipsum
+// -----------------------------------------------------------------------------
+// -- Syntax:
+// _first-index($string, $direction: ltr, $seperator: ' ');
+// -----------------------------------------------------------------------------
+// -- Parameters:
+// $string    { String } -> This parameter for
+// $direction { String } -> This parameter for
+// $seperator { String } -> This parameter for
+// -----------------------------------------------------------------------------
+// -- Example in usage:
+// _first-index('   helloWorld') -> 4
+// -----------------------------------------------------------------------------
+@function _first-index($string, $direction: ltr, $seperator: ' ') {
+
+  @for $i from 1 through str-length($string) {
+    $index: if($direction == ltr, $i, -$i);
+    @if str-slice($string, $index, $index) != $seperator {
+      @return $index;
+    }
+  }
+
+  @return 0;
+
+}
+
+// -----------------------------------------------------------------------------
+// -- SCSS _trim Function from doPXL
+// -----------------------------------------------------------------------------
+// -- Description:
+// This function clear the spaces from left to right (ltr) or right to left (rtl) or both side.
+// -----------------------------------------------------------------------------
+// -- Syntax:
+// _trim($string, $direction: both, $seperator: ' ');
+// -----------------------------------------------------------------------------
+// -- Parameters:
+// $string    { String } -> This parameter for
+// $direction { String } -> This parameter for
+// $seperator { String } -> This parameter for
+// -----------------------------------------------------------------------------
+// -- Example in usage:
+// _trim('   helloWorld       ') -> 'Hello World'
+// -----------------------------------------------------------------------------
+@function _trim($string, $direction: both, $seperator: ' ') {
+
+  @if $direction == ltr {
+    @return str-slice(
+      $string,
+      _first-index($string, ltr, $seperator),
+      str-length($string)
+    );
+  } @else if $direction == rtl {
+    @return str-slice(
+      $string,
+      0,
+      _first-index($string, rtl, $seperator)
+    );
+  } @else if $direction == both {
+    @return str-slice(
+      $string,
+      _first-index($string, ltr, $seperator),
+      _first-index($string, rtl, $seperator)
+    );
+  }
+
+}
+
+// -----------------------------------------------------------------------------
+// -- SCSS _str-to-list Function from doPXL
+// -----------------------------------------------------------------------------
+// -- Description:
+// Lorem ipsum
+// -----------------------------------------------------------------------------
+// -- Syntax:
+// _str-to-list($string, $seperator, $start: 1);
+// -----------------------------------------------------------------------------
+// -- Parameters:
+// $string    { String } -> This parameter for
+// $seperator { String } -> This parameter for
+// $start     { Number } -> This parameter for
+// $bracketed { String } -> This parameter for
+// -----------------------------------------------------------------------------
+// -- Example in usage:
+// _str-to-list('html, css, js', ',', $bracketed: comma) -> ("html", " css", " js")
+// -----------------------------------------------------------------------------
+@function _str-to-list($string, $seperator, $start: 1, $bracketed: comma) {
+
+  $string     : _trim($string, rtl, ';');
+  $current-str: str-slice($string, $start);
+  $list       : ();
+  $item-index : str-index($current-str, $seperator);
+
+  @if $item-index == null {
+    $list: ($current-str);
+  } @else {
+    $list: (str-slice($current-str, 1, $item-index - 1));
+    $list: join($list, _str-to-list($current-str, $seperator, $item-index + 1), $bracketed);
+  }
+
+  @return $list;
+
+}

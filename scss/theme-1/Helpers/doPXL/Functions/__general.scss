@@ -46,24 +46,6 @@
   }
 }
 
-@function _important-str($value) {
-  $str			: '';
-  $index		: str-index($value, '!important');
-  $important: if($index, str-slice($value, $index, ($index + 10)), null);
-  @if $important == '!important' {
-    $index		: $index - 1;
-    $str			: str-slice($value, 0, $index);
-    $important: true;
-  } @else {
-    $str			: $value;
-    $important: false;
-  }
-  @return (
-    'value'		 : $str,
-    'important': $important
-  );
-}
-
 // -----------------------------------------------------------------------------
 // SCSS _none Function from doPXL
 // -----------------------------------------------------------------------------
@@ -102,24 +84,24 @@
 // Example in usage:
 // background-color: _color('bg');
 // -----------------------------------------------------------------------------
-@function _color($color) {
-  $length: length($colors) - 1;
-  $others: map-get($colors, 'others');
-
-  @if type-of($color) == 'number' {
-    @if $color > $length {
-      @error '#{$color}. color has not defined in $colors variable. Check it please!';
-    } @else {
-      @return map-get($colors, $color);
-    }
-  } @else {
-    @if map-get($others, $color) {
-      @return map-get($others, $color);
-    } @else {
-      @error '"#{$color}" has not defined in \'others\' inside $colors variable. Check it please!';
-    }
-  }
-}
+// @function _color($color) {
+//   $length: length($colors) - 1;
+//   $others: map-get($colors, 'others');
+// 
+//   @if type-of($color) == 'number' {
+//     @if $color > $length {
+//       @error '#{$color}. color has not defined in $colors variable. Check it please!';
+//     } @else {
+//       @return map-get($colors, $color);
+//     }
+//   } @else {
+//     @if map-get($others, $color) {
+//       @return map-get($others, $color);
+//     } @else {
+//       @error '"#{$color}" has not defined in \'others\' inside $colors variable. Check it please!';
+//     }
+//   }
+// }
 
 // -----------------------------------------------------------------------------
 // SCSS _font Function from doPXL
@@ -135,22 +117,22 @@
 // Example in usage:
 // background-color: _font('bg');
 // -----------------------------------------------------------------------------
-@function _font($font) {
-  $length: length($fonts) - 1;
-  $icons: map-get($fonts, 'icons');
-
-  @if type-of($font) == 'number' {
-    @if $font > $length {
-      @error '#{$font}. font has not defined in $fonts variable. Check it please!';
-    } @else {
-      @return map-get($fonts, $font);
-    }
-  } @else {
-
-    @if map-get($icons, $font) {
-      @return map-get($icons, $font);
-    } @else {
-      @error '"#{$font}" has not defined in \'icons\' inside $fonts variable. Check it please!';
-    }
-  }
-}
+// @function _font($font) {
+//   $length: length($fonts) - 1;
+//   $icons: map-get($fonts, 'icons');
+// 
+//   @if type-of($font) == 'number' {
+//     @if $font > $length {
+//       @error '#{$font}. font has not defined in $fonts variable. Check it please!';
+//     } @else {
+//       @return map-get($fonts, $font);
+//     }
+//   } @else {
+// 
+//     @if map-get($icons, $font) {
+//       @return map-get($icons, $font);
+//     } @else {
+//       @error '"#{$font}" has not defined in \'icons\' inside $fonts variable. Check it please!';
+//     }
+//   }
+// }
